@@ -11,9 +11,16 @@ export const useMainStore = defineStore('main', {
     last_toast_id: '',
     document_text: '',
     content_ref: null,
+    images: [],
     temporary_image_url: null,
   }),
   actions: {
+    add_image(user_id, image, image_name) {
+      if (!this.images[user_id]) {
+        this.images[user_id] = []
+      }
+      this.images[user_id].push({name: image_name, data: image})
+    },
     set_temp_image(file) {
       this.temporary_image_url = URL.createObjectURL(file)
     },
@@ -58,6 +65,9 @@ export const useMainStore = defineStore('main', {
     },
   },
   getters: {
+    get_images_by_user() {
+      return (user_id) => this.images[user_id] || []
+    },
     /**
      * 
      * @returns content reference

@@ -6,12 +6,12 @@
     <div @keyup="update_content" contenteditable="true" ref="content" class="min-w-80 min-h-40 text-center border border-emerald-700 rounded-md">
       
     </div>
-    {{ mainStore.get_document_text }}
+    {{ content_value }}
   </div>
 </template>
 
 <script setup>
-import { onMounted, ref, h } from 'vue';
+import { onMounted, ref, h, computed } from 'vue';
 import insert_image from '@/components/text editor/insert_image.vue'
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
@@ -26,10 +26,12 @@ onMounted(() => {
   mainStore.set_content_ref(content)
 })
 
-let content_text = ref('')
+let content_value = ref('')
 
 const update_content = () => {
   // console.log(content.value.textContent)
+  console.log(content.value.children)
+  content_value.value = content.value
 }
 
 const handle_insert_text = (text) => {
