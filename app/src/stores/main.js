@@ -65,6 +65,13 @@ export const useMainStore = defineStore('main', {
     },
   },
   getters: {
+    /**
+     * @description temporary function to return image data for src binding reasons
+     * @returns the src data of a selected image
+     */
+    get_image_by_name() {
+      return (name, user_id) => this.images[user_id].filter(img => img.name === name)[0]['data']
+    },
     get_images_by_user() {
       return (user_id) => this.images[user_id] || []
     },
