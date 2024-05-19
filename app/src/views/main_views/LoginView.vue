@@ -1,9 +1,55 @@
 <template>
     <div class="flex justify-center items-center">
-        <form @submit.prevent="submit" class="flex flex-col border border-emerald-700 rounded-md w-2/6 h-2/3 p-2">
-            <input v-model="user_info.user" placeholder="Usuario"ype="text" class="border border-emerald-400 focus:outline-mustard-yellow-500 rounded p-1 mx-10 my-1">
-            <input v-model="user_info.pass" placeholder="Senha" type="password" class="border border-emerald-400 focus:outline-mustard-yellow-500 rounded p-1 mx-10 my-1">
-            <button type="submit" class="border border-emerald-400 m-auto px-2 py-1 rounded active:bg-emerald-500 transition-colors">Entrar</button>  
+        <form @submit.prevent="submit" class="
+            2xl:border-red-500
+            2xl:max-w-80
+            xl:border-mustard-yellow-500
+            xl:max-w-72
+            lg:border-green-500
+            lg:max-w-64
+            md:border-sky-500
+            md:max-w-56
+            sm:border-purple-500
+            sm:max-w-48
+
+            transition-all
+            max-w-44
+            min-w-40
+            flex
+            flex-col
+            border
+            border-emerald-700
+            rounded-md
+            w-2/6
+            h-2/3
+            p-2">
+            <input v-model="user_info.user" placeholder="Usuario" ype="text" class="
+                border
+                border-emerald-400
+                focus:outline-mustard-yellow-500
+                rounded
+                p-1
+                mx-2
+                my-1">
+            <input v-model="user_info.pass" placeholder="Senha" type="password" class="
+                border
+                border-emerald-400
+                focus:outline-mustard-yellow-500
+                rounded
+                p-1
+                mx-2
+                my-1">
+            <button type="submit" class="
+                border
+                border-emerald-400
+                m-auto
+                px-2
+                py-1
+                rounded
+                active:bg-emerald-500
+                transition-colors">
+                Entrar
+            </button>
         </form>
     </div>
 </template>
