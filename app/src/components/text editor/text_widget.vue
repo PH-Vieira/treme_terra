@@ -1,11 +1,11 @@
 <template>
-  <div class="flex flex-col items-center border border-gray-950 rounded-md p-1">
+  <div class="flex flex-col items-center border border-gray-950 rounded-md p-1 w-2/3">
     <div>
       <button @click="insert_image_button" class="m-1 p-1 border border-gray-950 rounded-md"
         type="button">Imagem</button>
     </div>
     <div @keyup="update_content" contenteditable="true" ref="content"
-      class="min-w-80 min-h-40 text-center border border-emerald-700 rounded-md">
+      class="min-w-80 min-h-40 text-center border border-emerald-700 rounded-md max-h-96 overflow-y-auto max-w-[90%]">
 
     </div>
   </div>
@@ -41,7 +41,7 @@ const handle_insert_text = (text) => {
 
     const div = document.createElement('div')
     div.contentEditable = false
-    div.className = 'flex items-center space-x-2 border border-gray-950 rounded-md w-fit'
+    div.className = 'flex items-center space-x-2 border border-gray-950 rounded-md w-fit mx-1'
     switch (text_align) {
       case 'left':
         div.style.marginRight = 'auto'
