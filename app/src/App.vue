@@ -24,19 +24,12 @@ const filtered_routes = computed(() => {
 
 <template>
   <div class="
-  2xl:border-red-500
-  xl:border-mustard-yellow-500
-  lg:border-green-500
-  md:border-sky-500
-  sm:border-purple-500
     sm:flex
     sm:flex-col
     
     flex
     flex-row
-    transition-all
-    border-4
-    border-black">
+    transition-all">
     <nav class="
       sm:static
       sm:flex
@@ -113,7 +106,10 @@ const filtered_routes = computed(() => {
     <RouterView class="
       sm:m-0
       ml-14
-      routerView
+      border-2
+      border-gray-950
+      fill_available
+      router_view
       overflow-auto" />
   </div>
 </template>
@@ -170,9 +166,5 @@ path {
       --offset: -20;
     }
   }
-}
-
-.routerView {
-  min-height: calc(100vh - 36px);
 }
 </style>

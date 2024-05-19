@@ -11,6 +11,7 @@
             md:max-w-56
             sm:border-purple-500
             sm:max-w-48
+            sm:h-2/3
 
             transition-all
             max-w-44
@@ -20,8 +21,8 @@
             border
             border-emerald-700
             rounded-md
-            w-2/6
-            h-2/3
+            w-40
+            h-40
             p-2">
             <input v-model="user_info.user" placeholder="Usuario" ype="text" class="
                 border
