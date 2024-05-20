@@ -63,7 +63,7 @@ const filtered_routes = computed(() => {
           menu">
           <label>
             <input type="checkbox" v-model="hamburger_toggle" class="hidden">
-            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="-6 0 100 100" xmlns="http://www.w3.org/2000/svg">
               <circle cx="50" cy="50" r="30" fill="#059669" />
               <path class="line--1" d="M0 70l28-28c2-2 2-2 7-2h64" />
               <path class="line--2" d="M0 50h99" />
@@ -107,7 +107,6 @@ const filtered_routes = computed(() => {
       sm:m-0
       ml-14
       border-2
-      border-gray-950
       fill_available
       router_view
       overflow-auto" />
