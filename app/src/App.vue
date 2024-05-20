@@ -79,7 +79,7 @@ const filtered_routes = computed(() => {
             border-t
             border-emerald-700">
         </div>
-        <RouterLink v-for="route in filtered_routes" :key="route.name" :to="route.path" class="
+        <RouterLink @click="hamburger_toggle = !hamburger_toggle" v-for="route in filtered_routes" :key="route.name" :to="route.path" class="
             sm:my-auto
 
             ml-2

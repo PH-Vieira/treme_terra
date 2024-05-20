@@ -39,9 +39,9 @@ onMounted(() => {
   mainStore.set_content_ref(content)
 })
 
-const handle_insert_text = (text) => {
+const handle_insert_image = (text) => {
   if (content.value) {
-    const text_content = text.split(':')[1]
+    const text_content = text.split(':')[1].slice(0, -1)
 
     const empty_div = document.createElement('div')
     empty_div.contentEditable = true
@@ -100,7 +100,7 @@ const insert_image_button = () => {
     {
       render() {
         return h(insert_image, {
-          onInsertText: handle_insert_text,
+          onInsertImage: handle_insert_image,
         });
       },
     },

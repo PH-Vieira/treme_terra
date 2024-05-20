@@ -31,7 +31,8 @@
                 rounded
                 p-1
                 mx-2
-                my-1">
+                my-1"
+                ref="input_username">
             <input v-model="user_info.pass" placeholder="Senha" type="password" class="
                 border
                 border-emerald-400
@@ -57,8 +58,13 @@
 
 <script setup>
 import { useLoginStore } from '@/stores/login/login';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 const login_store = useLoginStore()
+const input_username = ref(null)
+
+onMounted(() => {
+    input_username.value.focus()
+})
 
 let user_info = ref({
     user: '',
