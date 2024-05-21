@@ -1,21 +1,16 @@
 <template>
     <div class="flex justify-center items-center">
         <form @submit.prevent="submit" class="
-            2xl:border-red-500
             2xl:max-w-80
-            xl:border-mustard-yellow-500
             xl:max-w-72
-            lg:border-green-500
             lg:max-w-64
-            md:border-sky-500
             md:max-w-56
-            sm:border-purple-500
             sm:max-w-48
-            sm:h-2/3
+            sm:h-44
 
             transition-all
-            max-w-44
-            min-w-40
+            max-w-52
+            min-w-48
             flex
             flex-col
             border
