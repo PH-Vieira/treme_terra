@@ -105,10 +105,10 @@ const filtered_routes = computed(() => {
 
     <RouterView class="
       sm:m-0
+      sm:router_view
       ml-14
-      border-2
+      h-screen
       fill_available
-      router_view
       overflow-auto" />
   </div>
 </template>

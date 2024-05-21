@@ -15,7 +15,7 @@ export const useLoginStore = defineStore('login', {
                     this.logged = true
                     this.admin = true
                     this.user_id = 1
-                    router.push('documents')
+                    router.push('create')
                 }
             }
         },

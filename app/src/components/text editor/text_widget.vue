@@ -1,23 +1,19 @@
 <template>
-  <div class="flex flex-col items-center border border-gray-950 rounded-md p-1 w-2/3">
+  <div class="p-1 w-full">
     <div>
-      <button @click="insert_image_button" class="m-1 p-1 border border-gray-950 rounded-md"
-        type="button">Imagem</button>
+      <button @click="insert_image_button" class="my-1 px-2 py-1 border border-emerald-700 bg-emerald-500 rounded-md text-white"
+        type="button">Adicionar imagem</button>
     </div>
     <div @keyup="update_content" contenteditable="true" ref="content"
       class="
-        min-w-80
-        min-h-40
+        h-full min-h-44
+        w-full
         text-center
-        border
-        border-emerald-700
-        rounded-md
-        max-h-96
-        overflow-y-auto
-        max-w-[90%]">
+        border border-emerald-700 rounded-md
+        bg-white
+        overflow-y-auto">
 
     </div>
-    {{ mainStore.get_content_ref }}
   </div>
 </template>
 

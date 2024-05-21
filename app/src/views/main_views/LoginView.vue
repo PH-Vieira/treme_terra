@@ -71,7 +71,6 @@ let user_info = ref({
     pass: '',
 })
 const submit = () => {
-    console.log(`submitting..`);
     login_store.login(user_info)
 }
 </script>

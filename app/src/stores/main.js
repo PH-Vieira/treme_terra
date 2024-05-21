@@ -13,6 +13,15 @@ export const useMainStore = defineStore('main', {
     content_ref: null,
     images: [],
     temporary_image_url: null,
+    metadata_input_list: [
+      { name: 'Autor', value: '' },
+      { name: 'Titulo', value: '' },
+      { name: 'Orientador', value: '' },
+      { name: 'Coorientador', value: '' },
+      { name: 'Data', value: '' },
+      { name: 'Cidade', value: '' },
+      { name: 'Faculdade', value: '' },
+    ],
   }),
   actions: {
     add_image(user_id, image, image_name) {

@@ -1,18 +1,7 @@
 <template>
   <div class="bg-dark-gray-50 flex flex-row">
-    <div id="sideBar" class="bg-emerald-600 border-r-4 border-emerald-700 shadow-xl flex items-center">
-      <!-- <ul class="flex flex-col items-center">
-        <li v-for="item in sidebarStore.secoes" class="my-3 mx-2">
-          <button v-tooltip="item.nome">
-            <a :href="`#${item.id}`">
-              <img :src="item.imgPath" :alt="item.nome" class="w-8 h-8">
-            </a>
-          </button>
-        </li>
-      </ul> -->
-    </div>
     <div id="mainContent" v-if="!gerando" class="w-full overflow-y-auto">
-      <div id="stuff" class="bg-dark-gray-300">
+      <!-- <div id="stuff" class="bg-dark-gray-300">
         <ul class="flex justify-center">
           <li class="p-1 mx-2 my-1 bg-emerald-600 rounded-md text-white">
             <button @click="expandAll" type="button">Abrir tudo</button>
@@ -24,8 +13,11 @@
             <button @click="gerarPDF" type="button">Gerar PDF</button>
           </li>
         </ul>
-      </div>
-      <MetadataComponent :expanded="allExpanded" />
+      </div> -->
+      <button type="button" class="mx-4 mt-2 border-2 border-emerald-700 rounded-md p-1 bg-emerald-500 text-white font-bold tracking-wider hover:bg-mustard-yellow-300 hover:text-emerald-800">Salvar</button>
+      <section_metadata />
+      <section_slot :section_name="'Introducao'"></section_slot>
+      <!-- <MetadataComponent :expanded="allExpanded" />
       <ResumoComponent :expanded="allExpanded" />
       <AbstractComponent :expanded="allExpanded" />
       <SumarioComponent :expanded="allExpanded" />
@@ -37,8 +29,9 @@
       <ConclusaoComponent :expanded="allExpanded" />
       <ReferenciasComponent :expanded="allExpanded" />
       <ApendicesComponent :expanded="allExpanded" />
-      <AnexosComponent :expanded="allExpanded" />
+      <AnexosComponent :expanded="allExpanded" /> -->
     </div>
+    <!-- loading animation element -->
     <div v-else class="w-full flex justify-center items-center">
       <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
     </div>
@@ -60,34 +53,36 @@
 // import ReferenciasComponent from '@/components/MainContent/ReferenciasComponent.vue'
 // import ApendicesComponent from '@/components/MainContent/ApendicesComponent.vue'
 // import AnexosComponent from '@/components/MainContent/AnexosComponent.vue'
+import section_metadata from '@/components/section_metadata.vue'
+import section_slot from '@/components/section_slot.vue'
 import { ref } from 'vue'
 import { toast } from 'vue3-toastify'
 // import { usePDFStore } from '@/stores/pdf/main';
 
 // const mainPDFStore = usePDFStore()
 
-const allExpanded = ref(true)
+// const allExpanded = ref(true)
 
-const gerando = ref(false)
+// const gerando = ref(false)
 
-const expandAll = () => {
-  allExpanded.value = false
-}
-const colapseAll = () => {
-  allExpanded.value = true
-}
-const gerarPDF = () => {
-  gerando.value = true
-  toast('Gerando PDF, por favor aguarde um momento', { autoClose: 5000 })
-  mainPDFStore.gerarPDF({
-    "usar": "teste",
-    "message": "imTestingU",
-  })
-  setTimeout(() => {
-    gerando.value = false
-    toast('PDF gerado com sucesso', { autoClose: 5000 })
-  }, 3000);
-}
+// const expandAll = () => {
+//   allExpanded.value = false
+// }
+// const colapseAll = () => {
+//   allExpanded.value = true
+// }
+// const gerarPDF = () => {
+//   gerando.value = true
+//   toast('Gerando PDF, por favor aguarde um momento', { autoClose: 5000 })
+//   mainPDFStore.gerarPDF({
+//     "usar": "teste",
+//     "message": "imTestingU",
+//   })
+//   setTimeout(() => {
+//     gerando.value = false
+//     toast('PDF gerado com sucesso', { autoClose: 5000 })
+//   }, 3000);
+// }
 
 // const sidebarStore = useSidebarStore()
 </script>
