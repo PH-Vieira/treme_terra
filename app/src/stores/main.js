@@ -3,24 +3,6 @@ import { document } from 'postcss';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 
-class Metadata {
-  constructor() {
-    this.autor = ''
-    this.titulo = ''
-    this.orientador = ''
-    this.coorientador = ''
-    this.data = ''
-    this.cidade = ''
-    this.faculdade = ''
-  }
-
-  update_metadata(key, value) {
-    if (this.hasOwnProperty(key)) {
-      this[key] = value
-    }
-  }
-}
-
 export const useMainStore = defineStore('main', {
   state: () => ({
     // TODO: disable or delete
@@ -31,13 +13,12 @@ export const useMainStore = defineStore('main', {
     document_text: '',
     content_ref: null,
     temporary_image_url: null,
-    metadata_input_list: new Metadata(),
+    metadata_input_list: ['autor', 'titulo', 'orientador', 'coorientador', 'data', 'cidade', 'faculdade'],
+    metadata_input_model: {},
   }),
   actions: {
-    set_metadata_input_list(new_list) {
-      for (const [key, value] of Object.entries(new_list)) {
-        this.metadata_input_list.update_metadata(key, value)
-      }
+    set_metadata_input_model(model) {
+      this.metadata_input_model = model
     },
     add_image(user_id, image, image_name) {
       if (!this.images[user_id]) {
@@ -90,7 +71,12 @@ export const useMainStore = defineStore('main', {
   },
   getters: {
     /**
-     * 
+     * @returns metadata model content
+     */
+    get_metadata_input_model() {
+      return this.metadata_input_model
+    },
+    /**
      * @returns a list containing metadata info about the current doc
      */
     get_metadata_input_list() {

@@ -13,25 +13,24 @@
                 border border-emerald-700 rounded-md
                 m-1 p-1"
                 type="text"
-                v-for="(value, key) in Object.entries(input_list)"
-                :key="key"
-                v-model="input_list[value]"
-                :placeholder="String(value).split(',')[0]">
+                v-for="item, index in input_list"
+                :key="index"
+                :placeholder="item"
+                v-model="input_list_model[item]">
         </div>
-        {{ input_list }}
+        {{ mainStore.metadata_input_model }}
     </div>
 </template>
 
 <script setup>
 import { useMainStore } from '@/stores/main';
-import { computed, watch } from 'vue';
+import { ref, watch } from 'vue';
 
 const mainStore = useMainStore()
+const input_list = mainStore.get_metadata_input_list
+const input_list_model = ref({})
 
-let input_list = computed(() => mainStore.metadata_input_list)
-
-watch(input_list, (newList) => {
-    console.log(newList)
-    mainStore.set_metadata_input_list(newList)
+watch(input_list_model, (new_val) => {
+    mainStore.set_metadata_input_model(new_val)
 }, { deep: true })
 </script>
