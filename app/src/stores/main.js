@@ -7,23 +7,19 @@ export const useMainStore = defineStore('main', {
   state: () => ({
     // TODO: disable or delete
     DEBUG: true, // variable responsible for debuging new functions and stuff
+    images: [],
     selected_doc: 1,
     last_toast_id: '',
     document_text: '',
     content_ref: null,
-    images: [],
     temporary_image_url: null,
-    metadata_input_list: [
-      { name: 'Autor', value: '' },
-      { name: 'Titulo', value: '' },
-      { name: 'Orientador', value: '' },
-      { name: 'Coorientador', value: '' },
-      { name: 'Data', value: '' },
-      { name: 'Cidade', value: '' },
-      { name: 'Faculdade', value: '' },
-    ],
+    metadata_input_list: ['autor', 'titulo', 'orientador', 'coorientador', 'data', 'cidade', 'faculdade'],
+    metadata_input_model: {},
   }),
   actions: {
+    set_metadata_input_model(model) {
+      this.metadata_input_model = model
+    },
     add_image(user_id, image, image_name) {
       if (!this.images[user_id]) {
         this.images[user_id] = []
@@ -74,6 +70,18 @@ export const useMainStore = defineStore('main', {
     },
   },
   getters: {
+    /**
+     * @returns metadata model content
+     */
+    get_metadata_input_model() {
+      return this.metadata_input_model
+    },
+    /**
+     * @returns a list containing metadata info about the current doc
+     */
+    get_metadata_input_list() {
+      return this.metadata_input_list
+    },
     /**
      * @description temporary function to return image data for src binding reasons
      * @returns the src data of a selected image

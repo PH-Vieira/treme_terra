@@ -13,29 +13,24 @@
                 border border-emerald-700 rounded-md
                 m-1 p-1"
                 type="text"
-                v-for="(item, index) in input_list"
+                v-for="item, index in input_list"
                 :key="index"
-                :placeholder="item.name"
-                v-model="input_list[index].value">
+                :placeholder="item"
+                v-model="input_list_model[item]">
         </div>
-        {{ input_list }}
+        {{ mainStore.metadata_input_model }}
     </div>
 </template>
 
 <script setup>
+import { useMainStore } from '@/stores/main';
 import { ref, watch } from 'vue';
 
-let input_list = ref([
-    { name: 'Autor', value: '' },
-    { name: 'Titulo', value: '' },
-    { name: 'Orientador', value: '' },
-    { name: 'Coorientador', value: '' },
-    { name: 'Data', value: '' },
-    { name: 'Cidade', value: '' },
-    { name: 'Faculdade', value: '' },
-])
+const mainStore = useMainStore()
+const input_list = mainStore.get_metadata_input_list
+const input_list_model = ref({})
 
-watch(input_list.value, (newVal, oldVal) => {
-    console.log(newVal)
-})
+watch(input_list_model, (new_val) => {
+    mainStore.set_metadata_input_model(new_val)
+}, { deep: true })
 </script>
