@@ -18,7 +18,6 @@
                 :placeholder="item"
                 v-model="input_list_model[item]">
         </div>
-        {{ mainStore.metadata_input_model }}
     </div>
 </template>
 

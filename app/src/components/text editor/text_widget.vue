@@ -4,7 +4,10 @@
       <button @click="insert_image_button" class="my-1 px-2 py-1 border border-emerald-700 bg-emerald-500 rounded-md text-white"
         type="button">Adicionar imagem</button>
     </div>
-    <div @keyup="update_content" contenteditable="true" ref="content"
+    <div
+      @keyup="update_content"
+      @paste.prevent="(event) => handle_paste_content(event)"
+      contenteditable="true" ref="content"
       class="
         h-full min-h-44
         w-full
@@ -30,6 +33,15 @@ const loginStore = useLoginStore()
 const toastId = ref('')
 
 let content = ref(null)
+
+const handle_paste_content = (event) => {
+  const paste = (event.clipboardData).getData("text")
+  const selection = window.getSelection()
+  if (!selection.rangeCount) return
+  selection.deleteFromDocument()
+  selection.getRangeAt(0).insertNode(document.createTextNode(paste))
+  selection.collapseToEnd()
+}
 
 onMounted(() => {
   mainStore.set_content_ref(content)
