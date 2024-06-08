@@ -15,8 +15,28 @@ export const useMainStore = defineStore('main', {
     temporary_image_url: null,
     metadata_input_list: ['autor', 'titulo', 'orientador', 'coorientador', 'data', 'cidade', 'faculdade'],
     metadata_input_model: {},
+    trigger_salvar_secoes: false,
   }),
   actions: {
+    verificar_metadata_info() {
+      let aux = false
+      Object.values(this.metadata_input_model).forEach(e => {
+        e !== '' ? aux = true : aux = false
+      })
+      return aux
+    },
+    salvar_secoes() {
+      let aux = {}
+      console.log('salvando')
+      this.trigger_salvar_secao = true
+
+      this.verificar_metadata_info ? aux.metadata = this.metadata_input_model : aux.metadata = ''
+
+      setTimeout(() => {
+        console.log('saved', aux)
+        this.trigger_salvar_secao = false
+      }, 2500);
+    },
     set_metadata_input_model(model) {
       this.metadata_input_model = model
     },

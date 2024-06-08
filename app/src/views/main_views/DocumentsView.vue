@@ -11,6 +11,12 @@
                     <p>{{ image.name }}</p>    
                 </div>
             </div>
+            <div class="border border-emerald-600 rounded-md px-1 mx-1 text-center">
+                <h3>Papeis</h3>
+                <div v-for="item, index in Object.entries(mainStore.get_metadata_input_model)" :key="item.id">
+                    {{ item[0] }}: {{ item[1] }}
+                </div>
+            </div>
             <div class="border border-emerald-600 rounded-md px-1 mx-1">
                 <h3>Miscelaneous</h3>
             </div>

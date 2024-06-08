@@ -14,8 +14,8 @@
           </li>
         </ul>
       </div> -->
-      <button type="button" class="mx-4 mt-2 border-2 border-emerald-700 rounded-md p-1 bg-emerald-500 text-white font-bold tracking-wider hover:bg-mustard-yellow-300 hover:text-emerald-800">Salvar</button>
-      <section_metadata />
+      <button @click="mainStore.salvar_secoes" type="button" class="mx-4 mt-2 border-2 border-emerald-700 rounded-md p-1 bg-emerald-500 text-white font-bold tracking-wider">Salvar</button>
+      <section_metadata :trigger_salvar="mainStore.trigger_salvar_secoes" />
       <section_slot :section_name="'Introducao'"></section_slot>
       <!-- <MetadataComponent :expanded="allExpanded" />
       <ResumoComponent :expanded="allExpanded" />
@@ -39,52 +39,11 @@
 </template>
 
 <script setup>
-// import { useSidebarStore } from '@/stores/createSidebar';
-// import ResumoComponent from '@/components/MainContent/ResumoComponent.vue'
-// import MetadataComponent from '@/components/MainContent/MetadataComponent.vue'
-// import AbstractComponent from '@/components/MainContent/AbstractComponent.vue'
-// import IntroducaoComponent from '@/components/MainContent/IntroducaoComponent.vue'
-// import RevisaoBibliograficaComponent from '@/components/MainContent/RevisaoBibliograficaComponent.vue'
-// import SumarioComponent from '@/components/MainContent/SumarioComponent.vue'
-// import MetodologiaComponent from '@/components/MainContent/MetodologiaComponent.vue'
-// import ResultadosComponent from '@/components/MainContent/ResultadosComponent.vue'
-// import DiscussaoComponent from '@/components/MainContent/DiscussaoComponent.vue'
-// import ConclusaoComponent from '@/components/MainContent/ConclusaoComponent.vue'
-// import ReferenciasComponent from '@/components/MainContent/ReferenciasComponent.vue'
-// import ApendicesComponent from '@/components/MainContent/ApendicesComponent.vue'
-// import AnexosComponent from '@/components/MainContent/AnexosComponent.vue'
 import section_metadata from '@/components/section_metadata.vue'
 import section_slot from '@/components/section_slot.vue'
-import { ref } from 'vue'
-import { toast } from 'vue3-toastify'
-// import { usePDFStore } from '@/stores/pdf/main';
+import { useMainStore } from '@/stores/main';
 
-// const mainPDFStore = usePDFStore()
-
-// const allExpanded = ref(true)
-
-// const gerando = ref(false)
-
-// const expandAll = () => {
-//   allExpanded.value = false
-// }
-// const colapseAll = () => {
-//   allExpanded.value = true
-// }
-// const gerarPDF = () => {
-//   gerando.value = true
-//   toast('Gerando PDF, por favor aguarde um momento', { autoClose: 5000 })
-//   mainPDFStore.gerarPDF({
-//     "usar": "teste",
-//     "message": "imTestingU",
-//   })
-//   setTimeout(() => {
-//     gerando.value = false
-//     toast('PDF gerado com sucesso', { autoClose: 5000 })
-//   }, 3000);
-// }
-
-// const sidebarStore = useSidebarStore()
+const mainStore = useMainStore()
 </script>
 
 <style>

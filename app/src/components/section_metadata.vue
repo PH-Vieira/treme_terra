@@ -18,15 +18,22 @@
                 :placeholder="item"
                 v-model="input_list_model[item]">
         </div>
+        <div v-for="item, index in input_list" :key="index">
+            <pre>
+                {{ input_list_model[item] }}
+            </pre>
+        </div>
     </div>
 </template>
 
 <script setup>
 import { useMainStore } from '@/stores/main';
-import { ref, watch } from 'vue';
+import { computed, watch, ref } from 'vue';
+
+const props = defineProps(['trigger_salvar'])
 
 const mainStore = useMainStore()
-const input_list = mainStore.get_metadata_input_list
+const input_list = computed(() => mainStore.get_metadata_input_list)
 const input_list_model = ref({})
 
 watch(input_list_model, (new_val) => {
